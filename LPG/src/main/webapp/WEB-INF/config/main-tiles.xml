@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="MatchTemplate" template="/WEB-INF/LPG/layout/3DivisionLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/MatchHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/match/MatchList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/LPG/include/footer.jsp"/>
+	</definition>	
+	
+	<definition name="match" extends="MatchTemplate"/>
+	
+	<definition name="matchTeam" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/match/MatchListTeam.jsp"/>
+	</definition>
+	<definition name="matchResist" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/match/mchResit.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/MatchResistHeader.jsp"></put-attribute>
+	</definition>
+	<definition name="userSports" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/match/userSports.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/userSportsHeader.jsp"></put-attribute>
+	</definition>
+	<definition name="mchIndvDetail" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/match/mchIndvDetail.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/mchIndvDetailHeader.jsp"></put-attribute>
+	</definition>
+	<definition name="mchTeamYong" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/match/mchTeamYong.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/mchTeamYongHeader.jsp"></put-attribute>
+	</definition>
+	<definition name="mgrPaging" template="/WEB-INF/LPG/match/mgrMchList.jsp">
+		
+	</definition>
+	<definition name="paging" template="/WEB-INF/LPG/match/mgrMchList.jsp">
+		
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="game.LPG.user">
+  	<select id="login" resultType="user" parameterType="user">
+  		select * from lpguser
+  		where userId=#{userId} and userPwd=#{userPwd} 
+  	</select>
+  	<select id="login2" resultType="userSports" parameterType="user">
+  		select su.* from lpguser u, usersports su
+  		where u.userId=#{userId} and u.userPwd=#{userPwd} and u.userid = su.userid
+  	</select>
+  	<insert id="signup" parameterType="user">
+  	insert into lpguser values(#{userId},#{userPwd},#{userName},
+  							#{userNick},#{userPhone},to_date(#{userBirth}),
+  							#{userAddr},sysdate,#{userGender},#{userEmail},#{userEmailAgree},50000,#{subAddr})
+  	</insert>
+  
+  	<!-- 회원가입(joinForm.jsp) - 아이디 중복체크   -->
+  	<select id="joinIdCheck" resultType="user" parameterType="user">
+  		SELECT COUNT(*) AS checkValue
+  		FROM lpguser
+  		WHERE userId = #{userId}
+  	</select>
+  	
+  	<update id="update" parameterType="user">
+  		update lpguser set userpwd=#{userPwd}, userphone=#{userPhone}, useraddr=#{userAddr}, subAddr=#{subAddr} where userid=#{userId} 
+  	</update>
+	<select id="getUserInfo" resultType="user" parameterType="user">
+  		select * from lpguser
+  		where userId=#{userId}
+  	
+  	</select>
+  	<select id="findid" resultType="user" parameterType="user">
+  		select userID from lpguser
+  		where userName = #{userName} and userPhone = #{userPhone}
+  	</select>
+  	
+  	<select id="findpass" resultType="user" parameterType="user">
+  		SELECT COUNT(*) AS checkValue
+  		FROM lpguser
+  		WHERE userId = #{userId}
+  		AND userEmail=#{userEmail}
+  	</select>
+  	
+  	<update id="updateUserPassword" parameterType="user">
+  		update lpguser
+  		set userPwd=#{userPwd}
+  		where userId = #{userId}
+  	</update>
+  	
+  	<select id="myinfoPWCheck" resultType="user" parameterType="user">
+  		SELECT COUNT(*) AS checkValue
+  		FROM lpguser
+  		WHERE userId = #{userId}
+  		AND userPwd=#{userPwd}
+  	</select>
+  </mapper>

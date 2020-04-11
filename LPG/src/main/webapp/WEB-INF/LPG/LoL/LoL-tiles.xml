@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="LoLMain" template="/WEB-INF/LPG/layout/3DivisionLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/LoL/LoLMainHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/LoL/LoLMain.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/LPG/include/footer.jsp"/>
+	</definition>	
+	<definition name="LoLMchList" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/LoL/LoLMchList.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/LoL/LoLMchListHeader.jsp"/>
+	</definition>
+	<definition name="LoLMchResit" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/LoL/LoLMchResit.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/LoL/LoLMchResitHeader.jsp"/>
+	</definition>
+</tiles-definitions>

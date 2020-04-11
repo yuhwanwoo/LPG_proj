@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="game.LPG.user.UserDTO" alias="user"/>
+		<typeAlias type="game.LPG.userSports.UserSportsDTO" alias="userSports"/>
+		<typeAlias type="game.LPG.sportsMatch.SportsMatchDTO" alias="sportsMatch"/>
+		<typeAlias type="game.LPG.sportsMatch.SportsMatchIndivDTO" alias="sportsMatchIndiv"/>
+		<typeAlias type="game.LPG.sportsMatch.SportsMatchTeamDTO" alias="sportsMatchTeam"/>
+		<typeAlias type="game.LPG.sportsMatch.MatchSelectDTO" alias="ms"/>
+		<typeAlias type="game.LPG.sportsMatch.MatchDetailDTO" alias="matchDetail"/>
+		<typeAlias type="game.LPG.sportsMatch.SportsMatchTeamDTO" alias="smt"/>
+		<typeAlias type="game.LPG.soccerteam.TeamDTO" alias="team"/>
+		<typeAlias type="game.LPG.soccerteam.TeamMemberDTO" alias="teammember"/>
+		<typeAlias type="game.LPG.soccerteam.MemInfoModyDTO" alias="meminfomody"/>
+		<typeAlias type="game.LPG.ground.GroundDTO" alias="ground"/>
+		<typeAlias type="game.LPG.ground.GroundReserveDTO" alias="groundReserve"/>
+		<typeAlias type="game.LPG.ground.GroundReviewDTO" alias="groundReview"/>
+		<typeAlias type="game.LPG.paging.PagingDTO" alias="Paging"/>
+		<typeAlias type="game.LPG.point.PointDTO" alias="point"/>
+		<!-- <typeAlias type="game.LPG.competition.ContestDTO" alias="contest"/>
+		<typeAlias type="game.LPG.competition.ContestAttendeeDTO" alias="contestAttendee"/> -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/user.xml"/>
+		<mapper resource="mapper/userSports.xml"/>
+		<mapper resource="mapper/sportsMatch.xml"/>
+		<mapper resource="mapper/team.xml"/>
+		<mapper resource="mapper/ground.xml"/>
+		<mapper resource="mapper/Paging.xml"/>
+		<mapper resource="mapper/point.xml"/>
+	</mappers>
+</configuration>

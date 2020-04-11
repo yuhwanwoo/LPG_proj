@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game.LPG.soccerteam">
+	<!-- 팀 생성 -->
+	<insert id="teamcreate" parameterType="team">
+		insert into team values(team_seq.nextval,#{teamName},null,#{teamLocation},null,#{teamAbility},null,null,null,#{teamPre},sysdate,#{teamAge},null,#{memberPrivate},#{teamGender})
+	</insert>
+	<insert id="teamcreate2" parameterType="team">
+      insert into teammember values(teammember_seq.nextval,sysdate,'매니저',team_seq.currVal,#{sportsNo},null,null,0,0)
+    </insert>
+	<!-- 팀 정보수정 -->
+	<update id="teamupdate" parameterType="team">
+		update team 
+		set
+			teamAge = #{teamAge},
+			teamIntroduce = #{teamIntroduce},
+			teamLocation = #{teamLocation},
+			teamAbility = #{teamAbility},
+			teamUniform = #{teamUniform},
+			teamManner = #{teamManner},
+			teamStrategy = #{teamStrategy},
+			teamPre = #{teamPre},
+			memberPrivate =#{memberPrivate},
+			teamGender = #{teamGender}
+		where teamNo = #{teamNo}
+	</update>
+	
+	
+	<!-- 팀 전체 목록 -->
+	<select id="teamlistall" resultType="team">
+		select * from team
+	</select>
+	
+	<!-- 팀명 중복체크 -->
+	<select id="idcheck" resultType="team" parameterType="String">
+		select * from team where teamName = #{teamName}
+	</select>
+	
+	<!-- 팀 선택항목 검색 -->
+	<select id="teamcheckbox" resultType="team" parameterType="Map">
+		select * from team 
+		where teamGender = #{teamGender}
+			  and teamAge = #{teamAge}
+			  and teamLocation = #{teamLocation}
+	</select>
+	
+	<!-- 팀명으로 팀 검색 -->
+	<select id="teamnamesearch" resultType="team" parameterType="String">
+		select * from team where teamName like '%' || #{teamName} || '%'
+	</select>
+	
+	<!-- 팀 정보 조회 -->
+	<select id="teaminfo" resultType="team" parameterType="team">
+		select * from team where teamNo = #{teamNo}
+	</select>
+	
+	<!-- 팀 정보 페이지 권한에 따른 버튼 -->
+	<select id="mygrade" parameterType="String" resultType="teammember">
+		select * from teammember where sportsno = #{sportsNo}
+	</select>
+	
+	<!-- 팀원 정보조회 -->
+	<select id="teammemberinfo" resultType="teammember" parameterType="teammember">
+		select tm.tmno, tm.tmgrade, tm.tmtend, tm.backnum, lu.username
+		from teammember tm, usersports us, lpguser lu
+		where lu.userid = us.userid and us.sportsno = tm.sportsno and tm.memstat = 1 and tm.teamno = #{teamNo}
+	</select>
+	
+	<!-- 팀에서 팀원 개인 정보 조회 -->
+	<select id="gaininfo" resultType="teammember" parameterType="teammember">
+		select * from teamMember where tmNo = #{tmNo}
+	</select>
+	
+	<!-- 팀원 정보 수정 -->
+	<update id="teammemupdate" parameterType="teammember">
+		update teamMember
+		set
+			tmGrade = #{tmGrade},
+			tmTend = #{tmTend},
+			tmAbility = #{tmAbility},
+			backNum = #{backNum}
+		where tmNo = #{tmNo}
+	</update>
+	
+	<!-- 팀원수 구하기 -->	
+	<select id="count" resultType="int" parameterType="teammember">
+		select count(tmNo)
+        from teamMember
+		where teamNo = ${teamNo}
+	</select>
+	
+	<!-- 팀원 신청현황 -->
+	<select id="tmemberlist" resultType="teammember" parameterType="String">
+	     select tm.tmno, tm.tmAbility, tm.tmtend, lu.username
+		from teammember tm, usersports us, lpguser lu
+		where lu.userid = us.userid and us.sportsno = tm.sportsno and tm.memstat = 0 and tm.teamno = #{teamNo}
+	</select>
+	
+	<!-- 팀가입 승인 -->
+	<update id="tmemberapprove" parameterType="int">
+      update teammember set
+      memstat = 1
+      where tmNo = #{teamNo}
+   </update>
+   
+   	<!-- 팀가입 거절 -->
+   <update id="tmemberdeny" parameterType="int">
+      update teammember set
+      memstat = 2
+      where tmno = #{teamNo}
+   </update>
+   
+   <!-- 팀 가입신청하기 -->
+	<insert id="teamapply" parameterType="teammember">
+      insert into teammember values(tmno_seq.nextval,sysdate,'팀원',#{teamNo},#{sportsNo},null,null,0,0)
+    </insert>
+	<!-- 이름 구하는거 조인 -->
+   <select id="id" resultType="teammember" parameterType="teammember">
+      select u.userid as userid
+      from lpguser u, usersports us, teammember tm, team t
+      where u.userid = us.userid and
+           us.sportsno = tm.sportsno and
+           tm.teamno = t.teamno
+           tm.tmno = #{tmNo} and tm.teamno = #{teamNo}
+   </select>
+</mapper>

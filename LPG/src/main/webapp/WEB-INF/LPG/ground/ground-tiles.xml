@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!-- templates -->
+
+	<definition name="3Division" template="/WEB-INF/LPG/layout/3DivisionLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/LPG/include/footer.jsp"/>
+	</definition>
+
+	
+	<!-- search ground -->
+	
+	<definition name="search" template="/WEB-INF/LPG/layout/groundLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp"/>
+	</definition>
+	
+	<definition name="mapMain" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/emptySide.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListMap.jsp"/>
+	</definition>
+	
+	<definition name="calMain" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/emptySide.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListCalendar.jsp"/>
+	</definition>
+<!-- 		<put-attribute name="side" value="/WEB-INF/LPG/ground/searchBox.jsp" /> -->
+		
+	<definition name="mapDetail" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/groundDetail.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListMap.jsp"/>
+	</definition>
+	
+	<definition name="mapList" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/groundListSidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListMap.jsp"/>
+	</definition>
+	
+	<definition name="calDetail" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/groundDetail.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListCalendar.jsp"/>
+	</definition>
+	
+	<definition name="calList" extends="search">
+		<put-attribute name="side" value="/WEB-INF/LPG/ground/groundListSidebar.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundListCalendar.jsp"/>
+	</definition>
+	
+	
+	<!-- add ground -->
+	
+	<definition name="addGround" extends="3Division">
+		<put-attribute name="header" value="/WEB-INF/LPG/ground/addGroundH.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/addGround.jsp" />
+	</definition>
+	
+	
+	<!-- ground review -->
+	
+	<definition name="reviewGround" extends="3Division">
+		<put-attribute name="header" value="/WEB-INF/LPG/ground/reviewH.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundReview.jsp" />
+	</definition>
+	
+	
+	<!-- reserve Ground -->
+	
+	<definition name="reserveGround" extends="3Division">
+		<put-attribute name="header" value="/WEB-INF/LPG/ground/reserveH.jsp" />
+		<put-attribute name="content" value="/WEB-INF/LPG/ground/groundReserve.jsp" />
+	</definition>
+	
+</tiles-definitions>

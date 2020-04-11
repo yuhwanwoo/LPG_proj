@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="MatchListTemplate" template="/WEB-INF/LPG/layout/MatchListLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/match/MatchHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/match/MatchList.jsp"/>
+		<put-attribute name="list" value="/WEB-INF/LPG/match/MatchListTeam.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/LPG/include/footer.jsp"/>
+	</definition>
+	<definition name="listTeam" extends="MatchListTemplate"></definition>
+	<definition name="listIndiv" extends="MatchListTemplate">
+		<put-attribute name="list" value="/WEB-INF/LPG/match/MatchListIndiv.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mchTeamDetail" extends="MatchTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/match/MatchDetailHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/match/MatchTeamDetail.jsp"/>
+	</definition>
+	
+	<definition name="mchChange" extends="MatchTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/match/MatchChangeHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/match/MatchChange.jsp"/>
+	</definition>
+</tiles-definitions>

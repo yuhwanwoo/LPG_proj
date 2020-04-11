@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="MainTemplate" template="/WEB-INF/LPG/layout/3DivisionLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/team/maintop.jsp"/>
+		<put-attribute name="header" value=""/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/maincontent.jsp"/>
+		<put-attribute name="footer" value=""/>
+	</definition>
+	
+	<definition name="main" extends="MainTemplate"/>
+	
+</tiles-definitions>

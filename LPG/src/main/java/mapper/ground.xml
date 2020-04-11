@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game.LPG.ground">
+	<!-- 우리 페이지에서 구장 등록 받은 구장만 콜 -->
+	<select id="search" parameterType="String" resultType="ground">
+		select grdNo, grdName, grdType 
+		from ground 
+		where grdname||grdaddr||grdarea||grddetail||grdtype like '%'||#{search}||'%' and grdNo like 'P'||'%'
+	</select>
+	<select id="detail" parameterType="String" resultType="ground">
+		select * 
+		from ground 
+		where grdno=#{grdNo}
+	</select>
+	<insert id="addGround" parameterType="ground">
+		insert into ground values('P'||TO_CHAR(ground_seq.nextval), #{grdName}, #{grdAddr}, #{grdPhone}, #{grdArea}, #{grdDetail}, #{grdCost}, #{grdImg}, #{grdType}, #{xpos}, #{ypos})
+	</insert>
+	<select id="groundInfoForReview" resultType="ground" parameterType="String">
+		select g.grdName, g.grdAddr
+		from ground g, groundreserve gr 
+		where gr.mch_no=#{mch_no} and g.grdno = gr.grdno
+	</select>
+	<insert id="insertReview" parameterType="groundReview">
+		insert into groundReview values(groundreview_seq.nextval, #{grdNo}, #{grdrevContext}, #{grdRevQ4}, #{grdRevQ1}, #{grdRevQ2}, #{grdRevQ3}, #{sportsNo})
+	</insert>
+	<insert id="insertReserve" parameterType="groundReserve">
+		insert into groundReserve values(groundreserve_seq.nextval, #{grdNo}, #{grdrsvUseDate}, #{grdrsvStartTime}, #{grdrsvEndTime}, sysdate, '', '', #{sportsNo})
+	</insert>
+	<select id="reviewAvg" parameterType="String" resultType="int">
+		select avg(grdrevq1+grdrevq2+grdrevq3+grdrevq4)
+		from groundreview
+		where grdNo=#{grdNo}
+		group by grdNo
+	</select>
+	<select id="countReview" parameterType="String" resultType="int">
+		select count(grdNo)
+		from groundReview
+		where grdNo=#{grdNo}
+	</select>
+</mapper>

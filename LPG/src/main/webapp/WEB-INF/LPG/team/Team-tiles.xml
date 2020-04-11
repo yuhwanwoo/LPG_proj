@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="teamTemplate" template="/WEB-INF/LPG/layout/5DivisionLayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/LPG/include/top.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headercreate.jsp"/>
+		<put-attribute name="empty" value=""/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/createtile.jsp"/>
+		<put-attribute name="chat" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/LPG/include/footer.jsp"/>
+	</definition>
+	
+	<definition name="teamCreate" extends="teamTemplate"/>
+	
+	<definition name="teamMody" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermody.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/modytile.jsp"/>
+	</definition>
+
+	<definition name="teamSearch" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headersearch.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/searchtile.jsp"/>
+	</definition>
+	
+	<definition name="teamManager" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermyteam.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/infomanagertile.jsp"/>
+	</definition>
+	
+	<definition name="teamMember" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermyteam.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/infomembertile.jsp"/>
+	</definition>
+	
+	<definition name="teamNormal" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermyteam.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/infonormaltile.jsp"/>
+	</definition>
+	
+<!-- 	<definition name="teamMyteam" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermyteam.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/infonormaltile.jsp"/>
+	</definition> -->
+	
+	<definition name="teamMgrade" extends="teamTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermgrade.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/membergrade.jsp"/>
+	</definition>
+	
+	<definition name="meminfo" extends="MatchTemplate">
+		<put-attribute name="header" value="/WEB-INF/LPG/team/headermeminfo.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/LPG/team/memberinfo.jsp"/>
+		<put-attribute name="footer" value=""/>
+	</definition>
+	
+	<definition name="tmemberSearch" extends="teamTemplate">
+      <put-attribute name="header" value="/WEB-INF/LPG/team/headermemberapply.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/LPG/team/tmemberapply.jsp"/>
+   </definition>
+	
+</tiles-definitions>

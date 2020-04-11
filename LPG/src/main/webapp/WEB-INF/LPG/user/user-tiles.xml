@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+		
+		
+	<definition name="LogInTemplate" template="/WEB-INF/LPG/user/LogIn.jsp">
+	</definition>
+	
+	<definition name="login" extends="LogInTemplate"/>
+	<definition name="login/ok" extends="MatchTemplate"/>
+	
+	<definition name="signup" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/SignUp2.jsp"/>
+	</definition>
+	
+	<definition name ="findId" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/findIDPass.jsp"/>
+	</definition>
+	
+	<definition name ="find_IDPass_modify" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/find_IDPass_modify.jsp"/>
+	</definition>
+	
+	<definition name="myinfo" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/MyInfo2.jsp"/>
+	</definition>
+	
+	<definition name="sigupagree" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/signUp1.jsp"/>
+	</definition>
+	
+	<definition name="myinfoPWCheck" extends="MatchTemplate">
+		<put-attribute name="content" value="/WEB-INF/LPG/user/myinfoPWCheck.jsp"/>
+	</definition>
+</tiles-definitions>
